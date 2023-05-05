@@ -1,0 +1,4 @@
+
+-- changeset Bence:1683309339744-1
+CREATE TABLE student (id BIGINT NOT NULL, CONSTRAINT studentPK PRIMARY KEY (id));
+

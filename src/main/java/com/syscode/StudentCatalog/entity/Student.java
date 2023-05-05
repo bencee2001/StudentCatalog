@@ -1,4 +1,4 @@
-package com.syscode.StudentCatalog;
+package com.syscode.StudentCatalog.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
