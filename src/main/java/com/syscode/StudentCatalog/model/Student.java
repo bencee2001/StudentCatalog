@@ -2,11 +2,9 @@ package com.syscode.StudentCatalog.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UuidGenerator;
 
@@ -16,7 +14,7 @@ import java.util.UUID;
 @Table(name = "student", schema="public")
 @Data
 @RequiredArgsConstructor
-@NoArgsConstructor
+@AllArgsConstructor
 public class Student {
 
     @Id
@@ -24,14 +22,12 @@ public class Student {
     @UuidGenerator
     private String id;
 
-    @NonNull
-    @NotNull
+    @NotBlank
     @Column(nullable = false)
     private String name;
 
     @Email
-    @NotNull
-    @NonNull
+    @NotBlank
     @Column(nullable = false)
     private String email;
 

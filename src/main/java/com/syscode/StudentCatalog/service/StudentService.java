@@ -24,25 +24,10 @@ public class StudentService {
         return null;
     }
 
-    public ResponseEntity<String> saveStudent(Student student, BindingResult bindingResult) {
-        log.info("Start saving new student...");
-        if(bindingResult.hasErrors()){
-            return new ResponseEntity<>(buildErrorMessage(bindingResult), HttpStatus.BAD_REQUEST);
-        }else {
-            studentRepository.save(student);
-            log.info("Success");
-            return new ResponseEntity<>("Good", HttpStatus.CREATED);
-        }
+    public String saveStudent(Student student) {
+        Student savedStudent = studentRepository.save(student);
+        log.info(savedStudent.getName()+" was saved with the id "+savedStudent.getId());
+        return savedStudent.getName()+" was saved successfully.";
     }
 
-    private static String buildErrorMessage(BindingResult bindingResult) {
-        StringBuilder builder = new StringBuilder();
-        for(ObjectError error : bindingResult.getAllErrors()){
-            builder.append(Objects.requireNonNull(error.getCodes())[0]);
-            builder.append(": ");
-            builder.append(error.getDefaultMessage());
-            builder.append('\n');
-        }
-        return builder.toString();
-    }
 }
