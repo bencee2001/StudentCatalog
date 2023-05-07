@@ -1,5 +1,9 @@
 # StudentCatalog
 
+[Dokumentáció](https://github.com/bencee2001/InvoiceManager/blob/main/docs/StudentCatalog_Doc.pdf)
+
+[Swagger UI link](http://localhost:8080/swagger-ui/index.html#/)
+
 Liquibase:
 
 1. mvn spring-boot:run 
