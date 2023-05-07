@@ -1,6 +1,6 @@
 # StudentCatalog
 
-[Dokumentáció](https://github.com/bencee2001/InvoiceManager/blob/main/docs/StudentCatalog_Doc.pdf)
+[Dokumentáció](https://github.com/bencee2001/StudentCatalog/blob/main/docs/StudentCatalog_Doc.pdf)
 
 [Swagger UI link](http://localhost:8080/swagger-ui/index.html#/)
 
