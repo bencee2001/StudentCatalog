@@ -7,8 +7,13 @@ import org.springframework.validation.ObjectError;
 import java.util.Objects;
 
 @Service
-public class ErrorService {
+public class ValidationErrorService {
 
+    /**
+     * Format the errormessage
+     * @param bindingResult it has the validation errors
+     * @return errormessage
+     */
     public String getErrorMessage(BindingResult bindingResult) {
         StringBuilder builder = new StringBuilder();
         for(ObjectError error : bindingResult.getAllErrors()){

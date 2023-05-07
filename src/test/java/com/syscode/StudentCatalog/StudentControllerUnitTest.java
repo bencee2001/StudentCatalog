@@ -26,6 +26,10 @@ public class StudentControllerUnitTest {
     @InjectMocks
     StudentController studentController;
 
+    /**
+     * Tests if the input is invalid,
+     * if StudentCreateException or StudentUpdateException was thrown
+     */
     @Test
     void test_Validation_Exception(){
         BindingResult bindingResult = mock(BindingResult.class);

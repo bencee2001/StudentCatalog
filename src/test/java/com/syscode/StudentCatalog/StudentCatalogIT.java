@@ -56,6 +56,12 @@ public class StudentCatalogIT {
         selected_Id = studentList.get(0).getId();
     }
 
+    /**
+     * Tests the Student create handler and the Student list handler
+     * by adding a new Student to the database and to a list
+     * and then comparing the two
+     * @throws Exception for now, it is not relevant
+     */
     @Test
     void test_Create_Student_And_List() throws Exception {
         Student student3 = new Student("3","test3","test3@gmail.com");
@@ -72,6 +78,11 @@ public class StudentCatalogIT {
         assertEquals(studentController.getStudents(),studentList);
     }
 
+    /**
+     * Sending create request with bad email format and
+     * testing the response status
+     * @throws Exception for now, it is not relevant
+     */
     @Test
     void test_Bad_Email_Format() throws Exception {
         Student student1 = new Student("1","test1","test1gmail.com");
@@ -82,6 +93,10 @@ public class StudentCatalogIT {
             .andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
 
+    /**
+     * Sending delete request then testing the response status
+     * @throws Exception for now, it is not relevant
+     */
     @Test
     void test_Good_Delete_Student() throws Exception {
         mockMvc.perform(
@@ -89,6 +104,10 @@ public class StudentCatalogIT {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
+    /**
+     * Sending delete request then testing the response status
+     * @throws Exception for now, it is not relevant
+     */
     @Test
     void test_Bad_Delete_Student() throws Exception {
         mockMvc.perform(

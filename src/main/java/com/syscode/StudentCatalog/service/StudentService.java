@@ -18,17 +18,31 @@ public class StudentService {
 
     private final StudentRepository studentRepository;
 
+    /**
+     * Gives back the list of Students
+     * @return list of students
+     */
     public List<Student> getStudents() {
         log.info("The list has been requested");
         return studentRepository.findAll();
     }
 
+    /**
+     * Saves the Student
+     * @param student Valid Student object
+     * @return Saved Student(with generated UUID)
+     */
     public Student saveStudent(Student student) {
         Student savedStudent = studentRepository.save(student);
         log.info(savedStudent.getName() + " was saved with the id " + savedStudent.getId());
         return savedStudent;
     }
 
+    /**
+     * Deletes the student by id
+     * @param id id that's refers to a student
+     * @throws NoSuchStudentException thrown if id not refers to a student
+     */
     public void deleteStudentById(String id) throws NoSuchStudentException {
         if(studentRepository.findById(id).isPresent()) {
             studentRepository.deleteById(id);
@@ -37,6 +51,13 @@ public class StudentService {
             throw new NoSuchStudentException("No student on id "+id);
     }
 
+    /**
+     * Updates the student data. Can update one or both attribute
+     * @param id id that's refers to a student
+     * @param newStudentData new data for student
+     * @return updates Student
+     * @throws NoSuchStudentException thrown if id not refers to a student
+     */
     public Student updateStudent(String id, StudentUpdateDto newStudentData) throws NoSuchStudentException {
         Optional<Student> optStudent = studentRepository.findById(id);
         if(optStudent.isPresent()){

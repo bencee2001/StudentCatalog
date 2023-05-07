@@ -4,7 +4,7 @@ import com.syscode.StudentCatalog.libs.errors.BingingResultException;
 import com.syscode.StudentCatalog.libs.errors.NoSuchStudentException;
 import com.syscode.StudentCatalog.libs.errors.StudentCreateException;
 import com.syscode.StudentCatalog.libs.errors.StudentUpdateException;
-import com.syscode.StudentCatalog.service.ErrorService;
+import com.syscode.StudentCatalog.service.ValidationErrorService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
@@ -18,10 +18,10 @@ import org.springframework.web.context.request.WebRequest;
 @Log4j2
 public class AdvisorController {
 
-    private final ErrorService errorService;
+    private final ValidationErrorService errorService;
 
     @ExceptionHandler({StudentCreateException.class,StudentUpdateException.class})
-    public ResponseEntity<String> handleStudentCreateException(BingingResultException ex, WebRequest request){
+    public ResponseEntity<String> handleStudentException(BingingResultException ex, WebRequest request){
         String errorMessage =errorService.getErrorMessage(ex.getBindingResult());
         log.error(errorMessage);
         return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);

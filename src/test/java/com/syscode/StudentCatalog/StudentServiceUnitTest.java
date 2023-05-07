@@ -30,6 +30,9 @@ public class StudentServiceUnitTest {
     @InjectMocks
     StudentService studentService;
 
+    /**
+     * Tests the getStudents() method
+     */
     @Test
     void test_Get_Students(){
         Student student = new Student("1","test1","test@gmail.com");
@@ -40,6 +43,9 @@ public class StudentServiceUnitTest {
         assertEquals(List.of(student), students);
     }
 
+    /**
+     * Tests saveStudents method by saving 2 new Student
+     */
     @Test
     void test_Save_Student(){
         List<Student> studentList = new ArrayList<>();
@@ -57,6 +63,10 @@ public class StudentServiceUnitTest {
         assertEquals(studentList.size(), 2);
     }
 
+    /**
+     * Tests deleteStudentById method
+     * @throws NoSuchStudentException for now, it is not relevant
+     */
     @Test
     void test_Delete_User_With_Existing_Student() throws NoSuchStudentException {
         List<Student> studentList = new ArrayList<>();
@@ -74,6 +84,11 @@ public class StudentServiceUnitTest {
         assertEquals(studentList.size(), 0);
     }
 
+    /**
+     * Tests if the id is not referring to a student,
+     *  if it throws the right exception.
+     * @throws NoSuchStudentException expected exception
+     */
     @Test()
     void test_Delete_Student_With_Not_Existing_Student() throws NoSuchStudentException {
         Optional<Student> student = Optional.empty();
@@ -88,6 +103,10 @@ public class StudentServiceUnitTest {
         });
     }
 
+    /**
+     * Tests updateStudent method, by updating a Student with different scenarios
+     * @throws NoSuchStudentException for now, it is not relevant
+     */
     @Test
     void test_Update_Student_With_Existing_Student() throws NoSuchStudentException {
         Optional<Student> student = Optional.of(new Student("1", "aaa", "aaa@gmail.com"));
@@ -114,8 +133,13 @@ public class StudentServiceUnitTest {
         assertEquals(student.get().getEmail(),"ccc@gmail.com");
     }
 
+    /**
+     * Tests if the id is not referring to a student,
+     *  if it throws the right exception.
+     * @throws NoSuchStudentException expected exception
+     */
     @Test
-    void test_Update_Student_No_With_Existing_Student() throws NoSuchStudentException {
+    void test_Update_Student_With_Not_Existing_Student() throws NoSuchStudentException {
         Optional<Student> student = Optional.empty();
 
         when(studentRepository.findById(Mockito.any(String.class))).thenReturn(student);
